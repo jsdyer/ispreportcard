@@ -5,7 +5,7 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('--seed',action='store_true');a=p.parse_args()
  if a.seed:d=json.loads((source.ROOT/'ispreportcard-full-fixture.json').read_text())
  else:
-  shutil.rmtree(source.CACHE);source.CACHE.mkdir();(source.ROOT/'rpki-validator.json').write_bytes(fetch(rpki_full.SOURCE,limit=160_000_000));rpki_full.main();source.isp();d=json.loads((source.ROOT/'ispreportcard-fixture.json').read_text())
+  shutil.rmtree(source.CACHE);source.CACHE.mkdir();(source.ROOT/'rpki-validator.json').write_bytes(fetch(rpki_full.SOURCE,limit=160_000_000));rpki_full.main();source.isp();d=json.loads((source.ROOT/'ispreportcard-full-fixture.json').read_text())
  rows=d['records']
  if len(rows)!=len(source.ISPS):raise ValueError('Incomplete provider set')
  for r in rows:
